@@ -1,0 +1,104 @@
+<template name="list">
+	<h4>Options</h4>
+	<div class="btn-group">
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			Show <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><a class="showLimit" href="#">100</a></li>
+			<li><a class="showLimit" href="#">500</a></li>
+			<li><a class="showLimit" href="#">1000</a></li>
+			<li><a class="showLimit" href="#">All</a></li>
+		</ul>
+	</div>
+	<div class="btn-group">
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			Sort Ascending <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><a class="sortAsc" data-colNum="0" href="#">Application Name</a></li>
+			<li><a class="sortAsc" data-colNum="1" href="#">Type</a></li>
+			<li><a class="sortAsc" data-colNum="5" href="#">Date</a></li>
+			<li><a class="sortAsc" data-colNum="8" href="#">Issue</a></li>
+		</ul>
+	</div>
+	<div class="btn-group">
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			Sort Descending <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><a class="sortDsc" data-colNum="0" href="#">Application Name</a></li>
+			<li><a class="sortDsc" data-colNum="1" href="#">Type</a></li>
+			<li><a class="sortDsc" data-colNum="5" href="#">Date</a></li>
+			<li><a class="sortDsc" data-colNum="8" href="#">Issue</a></li>
+		</ul>
+	</div>
+    <hr>
+	<table class="table table-striped" style="width:100%">
+		<thead>
+			<tr>
+				<th>Application Name</th>
+				<th>Type</th>
+				<th>Date</th>
+				<th>Issue</th>
+				<th>Description</th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tr>
+			<td id="loadingRow" colspan="18">
+				Fetching application list...
+			</td>
+		</tr>
+		<tbody class="listItemRows">
+			{{#each listItems}}
+				<tr>
+					<td>{{{this.[0]}}}</td>
+					<td>{{{this.[1]}}}</td>
+					<td width="100">{{{this.[5]}}}</td>
+					<td>{{{this.[8]}}}</td>
+					<td>{{{this.[9]}}}</td>
+					<td><button type="button" class="btn btn-default modalLauncher" data-toggle="modal" data-target="#modal">
+					  Details
+					</button></td>
+				</tr>
+			{{/each}}
+			<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">Application Details</h4>
+						</div>
+						<div class="modal-body">
+						{{#with modalItem}}
+							{{{this.[0]}}}<br>
+							{{{this.[1]}}}<br>
+							{{{this.[2]}}}<br>
+							{{{this.[3]}}}<br>
+							{{{this.[4]}}}<br>
+							{{{this.[5]}}}<br>
+							{{{this.[6]}}}<br>
+							{{{this.[7]}}}<br>
+							{{{this.[8]}}}<br>
+							{{{this.[9]}}}<br>
+							{{{this.[10]}}}<br>
+							{{{this.[11]}}}<br>
+							{{{this.[12]}}}<br>
+							{{{this.[13]}}}<br>
+							{{{this.[14]}}}<br>
+							{{{this.[15]}}}<br>
+							{{{this.[16]}}}<br>
+							{{{this.[17]}}}<br>
+						{{/with}}
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</tbody>
+	</table>
+</template>
