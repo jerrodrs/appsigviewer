@@ -1,4 +1,4 @@
-Fortinet Application Signature Viewer
+Application Signature Viewer
 
 Developed using MeteorJS (https://www.meteor.com/), Bootstrap, jQuery
 Deployed on Heroku (https://appsigviewer.herokuapp.com/)
